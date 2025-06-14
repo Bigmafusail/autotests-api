@@ -7,7 +7,6 @@ from tools.fakers import get_random_email
 
 public_users_client = get_public_users_client()
 
-# Вместо CreateUserRequestDict используем CreateUserRequestSchema
 create_user_request = CreateUserRequestSchema(
     email=get_random_email(),
     password="string",
