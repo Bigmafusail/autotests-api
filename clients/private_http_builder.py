@@ -21,3 +21,4 @@ def get_private_http_client(user: AuthenticationUserSchema) -> Client:
         base_url="http://localhost:8000",
         headers={"Authorization": f"Bearer {login_response.token.access_token}"}
     )
+
