@@ -1,4 +1,4 @@
-from clients.exercises.exercises_schema import ExerciseSchema, CreateExerciseRequestSchema, CreateExerciseResponseSchema
+from clients.exercises.exercises_schema import ExerciseSchema, CreateExerciseRequestSchema, CreateExerciseResponseSchema, GetExerciseResponseSchema
 from tools.assertions.base import assert_equal
 
 
@@ -35,3 +35,14 @@ def assert_exercise(actual: ExerciseSchema, expected: ExerciseSchema):
     assert_equal(actual.order_index, expected.order_index, "order_index")
     assert_equal(actual.description, expected.description, "description")
     assert_equal(actual.estimated_time, expected.estimated_time, "estimated_time")
+
+
+def assert_get_exercise_response(response: GetExerciseResponseSchema, expected_exercise: ExerciseSchema):
+    """
+    Проверяет, что ответ получения данных задания соответствует ожидаемому заданию.
+
+    :param response: Ответ API с данными задания.
+    :param expected_exercise: Ожидаемые данные задания.
+    :raises AssertionError: Если хотя бы одно поле не совпадает.
+    """
+    assert_exercise(response.exercise, expected_exercise)
